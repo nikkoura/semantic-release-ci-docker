@@ -1,0 +1,10 @@
+#Note: this travis CI file is meant to handle versioning of the build scripts themselves, and is not part of the scripts
+#See 'template-travis.yml' for the file to deploy in projects.
+
+language: node_js
+arch: amd64
+os: linux
+node_js: lts/*
+
+if: tag IS blank AND branch = master AND type != pull_request AND fork = false
+script: npx semantic-release
