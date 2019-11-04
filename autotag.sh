@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-# Memorize current dir, and change dir to the current script's
-CALLPATH=`pwd`
-cd "${BASH_SOURCE%/*}/"
+SCRIPT_PATH= "${BASH_SOURCE%/*}/"
 
 # Run semantic release, which require .releaserc in the current dir
-npx semantic-release
-
-# Restore initial dir
-cd "${CALLPATH}"
+if [ -f .releaserc ] ; then 
+  npx semantic-release
+else
+  cp "${SCRIPT_PATH}/.releaserc" .
+  npx semantic-release
+  rm .releaserc
+fi
