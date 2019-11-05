@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SCRIPT_PATH= "${BASH_SOURCE%/*}/"
+SCRIPT_PATH="${BASH_SOURCE%/*}/"
 
 # Run semantic release, which require .releaserc in the current dir
 if [ -f .releaserc ] ; then 
